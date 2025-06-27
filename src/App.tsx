@@ -45,7 +45,7 @@ function App() {
       bpm: 155,
       key: "D Minor",
       tags: ["Dark", "Atmospheric", "Trap"],
-      preview: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav", // Placeholder - replace with actual preview URLs
+      preview: "tecca155bpm.mp3", // Placeholder - replace with actual preview URLs
       beatstarsUrl: "https://beatstars.com/ipmbaby"
     },
     {
