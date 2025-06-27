@@ -29,7 +29,7 @@ function App() {
     },
     {
       name: 'EXCLUSIVE',
-      price: '$149.99',
+      price: '$150.00',
       description: 'Full Ownership',
       features: ['100% ownership', 'All formats + stems', 'Complete rights'],
       icon: <Crown className="w-6 h-6" />,
@@ -41,9 +41,9 @@ function App() {
   const beats = [
     {
       id: 1,
-      name: "DARK NIGHTS",
-      bpm: 140,
-      key: "F# Minor",
+      name: "X Factor",
+      bpm: 155,
+      key: "D Minor",
       tags: ["Dark", "Atmospheric", "Trap"],
       preview: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav", // Placeholder - replace with actual preview URLs
       beatstarsUrl: "https://beatstars.com/ipmbaby"
