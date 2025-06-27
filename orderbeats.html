@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Beat License Order</title>
+</head>
+<body>
+
+  <a href="beat license.html">
+    <button type="button">Back</button>
+  </a>
+
+  <h2>Beat License Options</h2>
+
+  <table border="1">
+    <tr>
+      <th>License Type</th>
+      <th>Price</th>
+    </tr>
+    <tr>
+      <td>Basic License</td>
+      <td>$29.99</td>
+    </tr>
+    <tr>
+      <td>Premium License</td>
+      <td>$59.99</td>
+    </tr>
+    <tr>
+      <td>Unlimited License</td>
+      <td>$99.99</td>
+    </tr>
+    <tr>
+      <td>Exclusive License</td>
+      <td>$150.00</td>
+    </tr>
+  </table>
+
+  <h2>Order a License</h2>
+
+  <form action="https://formsubmit.co/your@email.com" method="POST">
+    <label for="licenseType">License Type:</label><br>
+    <input id="licenseType" name="License Type" type="text" placeholder="e.g., Basic License" required><br><br>
+
+    <label for="quantity">Quantity:</label><br>
+    <input id="quantity" name="Quantity" type="number" min="1" required><br><br>
+
+    <label for="date">Delivery Date:</label><br>
+    <input id="date" name="Delivery Date" type="date" required><br><br>
+
+    <!-- optional: name or email of customer -->
+    <label for="customerEmail">Your Email:</label><br>
+    <input id="customerEmail" name="Customer Email" type="email" required><br><br>
+
+    <button type="submit">Place Order</button>
+  </form>
+
+</body>
+</html>
