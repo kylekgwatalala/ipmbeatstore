@@ -1,5 +1,5 @@
 import React from 'react';
-import { Music, Mail, Instagram, Download, Crown, Zap, Infinity } from 'lucide-react';
+import { Music, Mail, Instagram, Download, Crown, Zap, Infinity, MessageCircle } from 'lucide-react';
 
 function App() {
   const licenses = [
@@ -37,6 +37,64 @@ function App() {
     }
   ];
 
+  // Featured beats from BeatStars
+  const beats = [
+    {
+      id: 1,
+      name: "DARK NIGHTS",
+      bpm: 140,
+      key: "F# Minor",
+      tags: ["Dark", "Atmospheric", "Trap"],
+      preview: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav", // Placeholder - replace with actual preview URLs
+      beatstarsUrl: "https://beatstars.com/ipmbaby"
+    },
+    {
+      id: 2,
+      name: "SHADOW REALM",
+      bpm: 135,
+      key: "A Minor",
+      tags: ["Opium", "Dark", "Underground"],
+      preview: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav", // Placeholder
+      beatstarsUrl: "https://beatstars.com/ipmbaby"
+    },
+    {
+      id: 3,
+      name: "MIDNIGHT DRIVE",
+      bpm: 145,
+      key: "C# Minor",
+      tags: ["Dark", "Melodic", "Trap"],
+      preview: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav", // Placeholder
+      beatstarsUrl: "https://beatstars.com/ipmbaby"
+    },
+    {
+      id: 4,
+      name: "VOID WALKER",
+      bpm: 138,
+      key: "D Minor",
+      tags: ["Atmospheric", "Dark", "Experimental"],
+      preview: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav", // Placeholder
+      beatstarsUrl: "https://beatstars.com/ipmbaby"
+    },
+    {
+      id: 5,
+      name: "NEON DECAY",
+      bpm: 142,
+      key: "G Minor",
+      tags: ["Dark", "Synth", "Underground"],
+      preview: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav", // Placeholder
+      beatstarsUrl: "https://beatstars.com/ipmbaby"
+    },
+    {
+      id: 6,
+      name: "PHANTOM ZONE",
+      bpm: 136,
+      key: "B Minor",
+      tags: ["Opium", "Dark", "Melodic"],
+      preview: "https://www.soundjay.com/misc/sounds/bell-ringing-05.wav", // Placeholder
+      beatstarsUrl: "https://beatstars.com/ipmbaby"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-black text-white font-mono">
       {/* Header */}
@@ -52,6 +110,7 @@ function App() {
             <nav className="hidden md:flex space-x-8">
               <a href="#beats" className="text-gray-300 hover:text-lime-400 transition-colors">BEATS</a>
               <a href="#pricing" className="text-gray-300 hover:text-lime-400 transition-colors">PRICING</a>
+              <a href="#custom" className="text-gray-300 hover:text-lime-400 transition-colors">CUSTOM</a>
               <a href="#contact" className="text-gray-300 hover:text-lime-400 transition-colors">CONTACT</a>
             </nav>
           </div>
@@ -121,34 +180,143 @@ function App() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((beat) => (
-              <div key={beat} className="group bg-gray-900 rounded-lg overflow-hidden border border-gray-800 hover:border-lime-400/50 transition-all duration-300">
-                <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 p-8 flex items-center justify-center">
+            {beats.map((beat) => (
+              <div key={beat.id} className="group bg-gray-900 rounded-lg overflow-hidden border border-gray-800 hover:border-lime-400/50 transition-all duration-300">
+                <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 p-8 flex items-center justify-center relative">
                   <Music className="w-16 h-16 text-lime-400 group-hover:scale-110 transition-transform" />
+                  
+                  {/* Audio Preview */}
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <audio 
+                      controls 
+                      className="w-full h-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{
+                        filter: 'invert(1) hue-rotate(90deg)',
+                        background: 'transparent'
+                      }}
+                    >
+                      <source src={beat.preview} type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
                 </div>
+                
                 <div className="p-6">
-                  <h4 className="text-xl font-bold text-white mb-2">BEAT #{beat.toString().padStart(3, '0')}</h4>
-                  <p className="text-gray-400 mb-4">Dark • Atmospheric • 140 BPM</p>
+                  <h4 className="text-xl font-bold text-white mb-2">{beat.name}</h4>
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {beat.tags.map((tag, index) => (
+                      <span key={index} className="px-2 py-1 bg-lime-400/20 text-lime-400 text-xs rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="text-gray-400 mb-4">{beat.bpm} BPM • {beat.key}</p>
                   <div className="flex justify-between items-center">
                     <span className="text-lime-400 font-bold">From $29.99</span>
                     <a 
-                      href="https://beatstars.com/ipmbaby" 
+                      href={beat.beatstarsUrl} 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="px-4 py-2 bg-lime-400 text-black font-bold rounded hover:bg-lime-300 transition-colors"
                     >
-                      LISTEN
+                      BUY NOW
                     </a>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+          
+          <div className="text-center mt-12">
+            <a 
+              href="https://beatstars.com/ipmbaby" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gray-800 text-lime-400 font-bold rounded-lg border border-lime-400/50 hover:bg-lime-400 hover:text-black transition-all duration-300"
+            >
+              VIEW ALL BEATS ON BEATSTARS
+              <Music className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Custom Beats Section */}
+      <section id="custom" className="py-20 bg-black">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h3 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+              CUSTOM <span className="text-lime-400">BEATS</span>
+            </h3>
+            <div className="w-24 h-1 bg-lime-400 mx-auto mb-8"></div>
+            
+            <div className="bg-gray-900 rounded-lg p-8 md:p-12 border border-gray-800">
+              <div className="mb-8">
+                <MessageCircle className="w-16 h-16 text-lime-400 mx-auto mb-6" />
+                <h4 className="text-2xl font-bold text-white mb-4">NEED SOMETHING UNIQUE?</h4>
+                <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                  Looking for a custom beat tailored specifically to your vision? IPM creates personalized dark, atmospheric beats that match your exact style and requirements.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-lime-400/20 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Music className="w-6 h-6 text-lime-400" />
+                  </div>
+                  <h5 className="text-white font-bold mb-2">PERSONALIZED</h5>
+                  <p className="text-gray-400 text-sm">Beats crafted to your specifications</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-lime-400/20 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Crown className="w-6 h-6 text-lime-400" />
+                  </div>
+                  <h5 className="text-white font-bold mb-2">EXCLUSIVE</h5>
+                  <p className="text-gray-400 text-sm">100% ownership guaranteed</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-lime-400/20 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Zap className="w-6 h-6 text-lime-400" />
+                  </div>
+                  <h5 className="text-white font-bold mb-2">FAST DELIVERY</h5>
+                  <p className="text-gray-400 text-sm">Quick turnaround times</p>
+                </div>
+              </div>
+              
+              <div className="bg-gray-800 rounded-lg p-6 mb-8">
+                <h5 className="text-lime-400 font-bold mb-3">CUSTOM BEAT PROCESS:</h5>
+                <ul className="text-gray-300 space-y-2 text-left">
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-lime-400 rounded-full mr-3"></div>
+                    Send reference tracks and describe your vision
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-lime-400 rounded-full mr-3"></div>
+                    Discuss pricing and timeline
+                  </li>
+                  <li className="flex items-center">
+                    <div className="w-2 h-2 bg-lime-400 rounded-full mr-3"></div>
+                    Receive your custom beat with stems
+                  </li>
+                </ul>
+              </div>
+              
+              <a 
+                href="https://instagram.com/thobo.moyo" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-lime-400 text-black font-bold text-lg rounded-lg hover:bg-lime-300 transition-all duration-300 transform hover:scale-105"
+              >
+                <Instagram className="w-6 h-6" />
+                DM @THOBO.MOYO FOR CUSTOM BEATS
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-black">
+      <section id="pricing" className="py-20 bg-gradient-to-b from-black to-gray-900">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h3 className="text-4xl md:text-5xl font-bold mb-4 text-white">
